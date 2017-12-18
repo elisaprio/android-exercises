@@ -31,7 +31,7 @@ public class LibraryActivity extends AppCompatActivity {
 
         Request request = new Request
                 .Builder()
-                .url("https://api.github.com/users/blacroix")
+                .url("https://api.github.com/users/elisaprio")
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
