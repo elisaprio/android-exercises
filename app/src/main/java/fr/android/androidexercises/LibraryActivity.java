@@ -24,6 +24,8 @@ public class LibraryActivity extends AppCompatActivity {
         openButton.setOnClickListener(v -> {
             Intent intent = new Intent(LibraryActivity.this, BookActivity.class);
             // TODO add parcel book to intent
+
+            intent.putExtra(BookActivity.BOOK,book);
             startActivity(intent);
         });
     }
