@@ -1,5 +1,7 @@
 package fr.android.androidexercises;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +9,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.Toast;
+
+import java.util.Date;
 
 public class LibraryActivity extends AppCompatActivity {
 
@@ -18,6 +24,7 @@ public class LibraryActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Button openButton = findViewById(R.id.openButton);
+        Button datePicker = findViewById(R.id.datePicker);
 
         Book book = new Book("Garry Whopper", "CK Rowling");
 
@@ -27,6 +34,16 @@ public class LibraryActivity extends AppCompatActivity {
 
             intent.putExtra(BookActivity.BOOK,book);
             startActivity(intent);
+        });
+
+        datePicker.setOnClickListener(v -> {
+            new DatePickerDialog(LibraryActivity.this,new DatePickerDialog.OnDateSetListener(){
+                public void onDateSet(DatePicker view, int year, int month, int day){
+                    new AlertDialog.Builder(LibraryActivity.this).setMessage(day+"/"+(month+1)+"/"+year).show();
+                    //Toast.makeText(LibraryActivity.this,day+"/"+(month+1)+"/"+year,Toast.LENGTH_SHORT).show();
+                }
+            }, 2017, 11, 18).show();
+
         });
     }
 
