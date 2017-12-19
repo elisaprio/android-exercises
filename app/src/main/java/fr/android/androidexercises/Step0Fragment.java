@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+
 public class Step0Fragment extends Fragment {
 
     private static final String STEP_0 = "This is step 0";
@@ -22,6 +23,7 @@ public class Step0Fragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         // TODO cast context to listener
+        listener = (OnNextStep0Listener) context;
     }
 
     @Nullable
@@ -31,10 +33,15 @@ public class Step0Fragment extends Fragment {
 
         // TODO find TextView and set text
 
+        textView = view.findViewById(R.id.textView);
+        textView.setText(STEP_0);
+
         // TODO find Button and set listener
-        Button nextButton;
+        Button nextButton = view.findViewById(R.id.nextButton);
         nextButton.setOnClickListener(v -> {
             // TODO call listener
+            listener.onNext();
+
         });
 
         return view;
@@ -45,10 +52,12 @@ public class Step0Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // TODO setText(STEP_0)
+        textView.setText(STEP_0);
     }
 
     public interface OnNextStep0Listener {
         // TODO add onNext() method
+        public void onNext();
     }
 
 }

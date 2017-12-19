@@ -11,8 +11,24 @@ public class LibraryActivity extends AppCompatActivity implements Step0Fragment.
         setContentView(R.layout.activity_library);
 
         // TODO replace Step0Fragment in containerFrameLayout
+
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.containerFrameLayout,
+                        new Step0Fragment(),
+                        Step0Fragment.class.getSimpleName())
+                .commit();
+
+
     }
 
     // TODO implement onNext() from Step0Fragment.OnNextStep0Listener
+    public void onNext(){
+        getSupportFragmentManager().beginTransaction()
+                .addToBackStack(Step1Fragment.class.getSimpleName())
+                .replace(R.id.containerFrameLayout, new Step1Fragment(),
+                        Step1Fragment.class.getSimpleName())
+                .commit();
+    };
+
 
 }
