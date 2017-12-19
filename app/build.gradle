@@ -37,8 +37,11 @@ dependencies {
             "com.android.support.constraint:constraint-layout:1.0.2")
 
     // TODO add Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.2.0'
 
     // TODO add GSon converter for Retrofit
+    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
 
     // TODO add Timber
+    implementation 'com.jakewharton.timber:timber:4.6.0'
 }
