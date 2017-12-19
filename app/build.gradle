@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
+    //noinspection GradleDependency
     buildToolsVersion "27.0.1"
 
     packagingOptions {
@@ -16,6 +17,7 @@ android {
         versionName "1.0"
 
         // TODO add testInstrumentationRunner
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -44,11 +46,18 @@ dependencies {
             "com.android.support:design:$support_version",
             "com.android.support:support-annotations:$support_version")
 
-    testImplementation 'junit:junit:4.12'
-
+    testImplementation (
+        'junit:junit:4.12',
     // TODO Mockito
-
+        'org.mockito:mockito-core:2.12.0',
     // TODO AssertJ + AssertJ Android
-
+        'com.squareup.assertj:assertj-android:1.2.0',
+        'org.robolectric:robolectric:3.5.1',
     // TODO Espresso
+    )
+
+    androidTestImplementation(
+        'com.android.support.test.espresso:espresso-core:3.0.1',
+        'com.android.support.test:runner:1.0.1'
+    )
 }
